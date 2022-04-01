@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{{ super() }}
+
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/sign_up.css">
+  </head>
+  <body>
+
+  <div class="contact-title">
+	  <h1>WELCOME TO Vaxing You</h1>
+	  <h2>Slogan</h2>
+  </div>
+
+    {% block content %}
+     <form id="myForm" method="POST" action="/signup">
+            {{ myForm.csrf_token }}
+            <div> 
+              {{ myForm.username(size=20, class="validate") }}
+              {{ myForm.username.label }}
+            </div>
+            
+            <div>
+              {{ myForm.email(size=50, class="validate") }}
+              {{ myForm.email.label }}
+            </div>
+
+            <div>
+              {{ myForm.password(size=20, class="validate") }}
+              {{ myForm.password.label }}
+            </div>
+
+            <div>
+              {{myForm.submit}}
+              <input type="button" onclick='' value="Already have an account?, LogIn">
+            </div> 
+        </form>
+    {% endblock %}
+    
+
+    
+   

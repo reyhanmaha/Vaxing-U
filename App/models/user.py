@@ -4,15 +4,18 @@ from App.database import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username =  db.Column(db.String, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
 
     def __init__(self, username, password):
-        self.username = username
+        self.username=username
+        self.email=email
         self.set_password(password)
 
     def toDict(self):
         return{
             'id': self.id,
+            'email': self.email,
             'username': self.username
         }
 

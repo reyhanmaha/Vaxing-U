@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+	  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="static/login.css">
+  </head>
+  <body>
+
+  <div class="contact-title">
+	  <h1>WELCOME TO Vaxing You</h1>
+	  <h2>Slogan</h2>
+  </div>
+  {% block content %}
+     <form id="myLoginForm" method="POST" action="/loginUser">
+            {{ myForm.csrf_token }}
+            <div> 
+              {{ myForm.username(size=20, class="validate") }}
+              {{ myForm.username.label }}
+            </div>
+
+            <div>
+              {{ myForm.password(size=20, class="validate") }}
+              {{ myForm.password.label }}
+            </div>
+
+            <div>
+              {{myForm.submit}}
+            </div> 
+        </form>
+    {% endblock %}
+<!--
+  <div class="contact-form">
+	  <form id="contact-form" method="post" action="">
+		  <input name="username" type="text" minlength="6" maxlength="16" class="form-control" placeholder="Your Name(must be between 6 and 16 characters)" required><br>
+      <input name="password" type="password" minlength="6" maxlength="16" class="form-control" placeholder="Your Password(must be between 6 and 16 characters)" required><br>
+		  
+    
+      <div class="form">
+        <input type="submit" class="form-control submit" value="Login" onclick="Formsubmit()"/ required>
+      </div>
+    
+  
+      <a class="btn" href="template/sign_up.html">Create A New Account</a>
+  </form>
+  </div>-->
+<!--
+  <script>
+    function alertRegister(){
+      alert("Welcome,you are now a registered user!.");
+    }
+    const server="https://login38.p.rapidapi.com/ygnhrth535gfdv";
+    async function Formsubmit(){
+    fetch(server, {
+	"method": "POST",
+	"headers": {
+		"content-type": "application/x-www-form-urlencoded",
+		"useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36",
+		"x-csrftoken": "12",
+		"accept": "*/*",
+		"accept-language": "gzip, deflate",
+		"cookie": "csrftoken=12",
+		"x-rapidapi-key": "1942c9e20cmshed1754f2cb0a7d9p16ebe7jsn386a2f493715",
+		"x-rapidapi-host": "login38.p.rapidapi.com"
+	},
+	"body": {
+		"username": "",
+		"password": "",
+    "email:": ""
+	}
+  
+
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
+}
+
+  </script>
+-->
+</body>
+</html>
