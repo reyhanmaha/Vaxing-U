@@ -18,9 +18,9 @@ def signup():
 def signupUser():
   myForm = SignUp()
   if myForm.validate_on_submit():
-    data = request.myForm
-    newuser = User(username=data['username'], email=data['email'])
-    newuser.set_password(data['password'])
+    formData= request.myForm
+    newuser = User(username=formData['username'], email=formData['email'])
+    newuser.set_password(formData['password'])
     print(newuser['username'], newuser['password'])
     db.session.add(newuser)
     db.session.commit()
