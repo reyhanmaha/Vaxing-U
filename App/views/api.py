@@ -21,6 +21,7 @@ def signupUser():
   if myForm.validate_on_submit():
     formData=request.form
     create_user(formData["username"],formData["email"],formData["password"])
+    
     #newuser = User(username=formData['username'], email=formData['email'])
     #newuser.set_password(formData['password'])
     #print(newuser['username'], newuser['password'])
