@@ -1,6 +1,6 @@
 from App.models import User
 from App.database import db
-import uuid4
+import uuid
 
 def get_all_users():
     return User.query.all()
