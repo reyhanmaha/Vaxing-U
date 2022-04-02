@@ -1,9 +1,10 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from App.database import db
+from sqlalchemy.dialects.postgresql import UUID
 #from App.models.medicalRecords import UserRecords
 
 class User(db.Model):
-    id = db.Column(db.String(100), primary_key=True)
+    id = db.Column(UUID(as_uuid=True), primary_key=True)
     username =  db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)

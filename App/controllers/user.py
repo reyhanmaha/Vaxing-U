@@ -5,6 +5,7 @@ import uuid
 def get_all_users():
     return User.query.all()
 
+
 def create_user(username,email, password):
     newuser =User(id=uuid.uuid4(),username=username,email=email,password=password)
     #newuser.set_password(password="password")
