@@ -49,8 +49,8 @@ def loginAction():
       if user and user.check_password(data['password']):
         flash('You have Logged in successfully.')
         login_user(user) 
-        return redirect(url_for('https://info-2602-project.dopeskittles.repl.co/'))
-  flash('Invalid credentials')
-  return redirect(url_for('https://info-2602-project.dopeskittles.repl.co/login.html'))
+        return redirect(url_for('index.html'))
+    flash('Invalid credentials')
+    return redirect(url_for('login.html'))
 
   
