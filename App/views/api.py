@@ -1,5 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory
 from App.models.forms import SignUp, LogIn
+from App.models.user import User
 api_views = Blueprint('api_views', __name__, template_folder='../templates')
 
 from App.controllers import (
@@ -16,32 +17,33 @@ def signup():
 
 @api_views.route('/signup', methods=['POST'])
 def signupUser():
-  myForm = SignUp()
+  myForm=SignUp()
   if myForm.validate_on_submit():
-    formData= request.myForm
-    newuser = User(username=formData['username'], email=formData['email'])
-    newuser.set_password(formData['password'])
-    print(newuser['username'], newuser['password'])
-    db.session.add(newuser)
-    db.session.commit()
+    formData=request.myForm
+    create_user(formData["username"],formData["email"],formData["password"])
+    #newuser = User(username=formData['username'], email=formData['email'])
+    #newuser.set_password(formData['password'])
+    #print(newuser['username'], newuser['password'])
+    #db.session.add(newuser)
+    #db.session.commit()
     flash('Your Account Has Been Created!')
     return redirect(url_for('index.html'))
     #return render_template('index.html')
-  #flash('Error invalid input!')
-  #return render_template('sign_up.html', myForm=myForm)
+  flash('Error invalid input!')
+  return redirect(url_for("signup.html"))
   #return redirect(url_for('sign_up.html')) 
 
 @api_views.route('/login', methods=['GET'])
 def getLogin():
-  form = LogIn()
-  return render_template('login.html', form=form)
+  myForm=LogIn()
+  return render_template('login.html', myForm=myForm)
 
 
 @api_views.route('/loginUser', methods=['POST'])
 def loginAction():
-  form = LogIn()
-  if form.validate_on_submit(): 
-      data = request.form
+  myForm = LogIn()
+  if myForm.validate_on_submit(): 
+      data = request.myForm
       user = User.query.filter_by(username = data['username']).first()
       if user and user.check_password(data['password']):
         flash('You have Logged in successfully.')
