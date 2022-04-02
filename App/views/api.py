@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request, send_from_directory, flash, url_for
+from flask import Blueprint, redirect, render_template, request, send_from_directory, flash, url_for,login_user
 from App.models.forms import SignUp, LogIn
 from App.models.user import User
 api_views = Blueprint('api_views', __name__, template_folder='../templates')
@@ -37,7 +37,7 @@ def getLogin():
 @api_views.route('/loginUser', methods=['POST'])
 def loginAction():
   form = LogIn()
-  if myForm.validate_on_submit(): 
+  if form.validate_on_submit(): 
       data = request.form
       user = User.query.filter_by(username = data['username']).first()
       if user and user.check_password(data['password']):
@@ -45,6 +45,7 @@ def loginAction():
         login_user(user) 
         return redirect(url_for('index.html'))
       flash('Invalid credentials')
-      return redirect(url_for('login.html'))
+      myForm=LogIn()
+      return render_template('login.html',myForm=myForm)
 
   
