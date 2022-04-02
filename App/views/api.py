@@ -29,10 +29,10 @@ def signupUser():
     #db.session.commit()
     flash('Your Account Has Been Created!')
     return redirect(url_for('index.html'))
-    #return render_template('index.html')
+    
   flash('Error invalid input!')
   return redirect(url_for("signup.html"))
-  #return redirect(url_for('sign_up.html')) 
+
 
 @api_views.route('/login', methods=['GET'])
 def getLogin():
