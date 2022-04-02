@@ -19,7 +19,7 @@ def signup():
 def signupUser():
   myForm=SignUp()
   if myForm.validate_on_submit():
-    formData=request.myForm
+    formData=request.form
     create_user(formData["username"],formData["email"],formData["password"])
     #newuser = User(username=formData['username'], email=formData['email'])
     #newuser.set_password(formData['password'])

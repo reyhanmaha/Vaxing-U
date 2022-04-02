@@ -13,3 +13,6 @@ class LogIn(FlaskForm):
     username = StringField('username', validators=[InputRequired()])
     password = PasswordField('Password', validators=[InputRequired()])
     submit = SubmitField('Login', render_kw={'class': 'btn waves-effect waves-light white-text'})
+
+#class UserData(FlaskForm):
+#    birthID=

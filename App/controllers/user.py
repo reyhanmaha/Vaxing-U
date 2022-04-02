@@ -1,12 +1,13 @@
 from App.models import User
 from App.database import db
-
+import uuid4
 
 def get_all_users():
     return User.query.all()
 
 def create_user(username,email, password):
-    newuser = User(username=username,email=email, password=password)
+    newuser =User(id=id.uuid4(),username=username,email=email,password=password)
+    #newuser.set_password(password="password")
     db.session.add(newuser)
     db.session.commit()
 
