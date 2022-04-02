@@ -1,4 +1,5 @@
 from App.database import db
+from App.models.user import User
 
 class UserRecords(db.Model):
     birthID = db.Column(db.Integer, primary_key=True)
@@ -7,9 +8,7 @@ class UserRecords(db.Model):
     birthPlace= db.Column(db.String(120), nullable=False)
     #DateOfBirth=db.Column(db.)
     Sex= db.Column(db.String(20), nullable=False)
-    
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=False)
+    user_id= db.Column(db.String(100), db.ForeignKey('user_id'))
 
     def __init__(self,id,username,email,password):
         self.id=id
