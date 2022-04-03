@@ -15,12 +15,14 @@ from App.controllers import (
 )
 
 from App.views import (
+    mainPage_views,
     medicalData_views,
     user_views,
     api_views
 )
 
 views = [
+    mainPage_views,
     medicalData_views,
     user_views,
     api_views

@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request, send_from_directory, flash, url_for,login_user
+from flask import Blueprint, redirect, render_template, request, send_from_directory, flash, url_for
 from App.models.forms import SignUp, LogIn
 from App.models.user import User
 api_views = Blueprint('api_views', __name__, template_folder='../templates')
