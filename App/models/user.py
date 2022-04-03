@@ -4,10 +4,10 @@ from sqlalchemy.dialects.postgresql import UUID
 #from App.models.medicalRecords import UserRecords
 
 class User(db.Model):
-    id = db.Column(UUID(as_uuid=True), primary_key=True)
-    username =  db.Column(db.String(50), nullable=False)
+    id = db.Column(db.String(120), primary_key=True)
+    username =  db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=False)
+    password = db.Column(db.String(120),unique=True, nullable=False)
     record=db.relationship('UserRecords', backref='User', uselist=False)
 
     def __init__(self,id,username,email,password):

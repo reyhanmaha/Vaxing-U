@@ -64,3 +64,4 @@ def create_app(config={}):
 
 app = create_app()
 migrate = get_migrate(app)
+
