@@ -35,7 +35,7 @@ def signupUser():
     #return redirect(url_for('/templates/GetuserData.html'))
     return redirect("/dataForm")
   flash('Error invalid input!')
-  return redirect(url_for("signup.html"))
+  return redirect("/")
 
 #@login_manager.user_loader
 
