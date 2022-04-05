@@ -121,6 +121,7 @@ body {
   background-size: cover;
   height: 100vh;
   overflow-x: hidden;
+  overflow-y: hidden;
   text-align: center;
  
 }
@@ -233,7 +234,7 @@ footer{
   background: transparent;
   box-sizing: border-box;
   text-align: center;
-  padding: 140px 100px;
+  padding: 4px 100px;
   text-shadow: 0 0 5px rgb(0, 0, 0);
   text-transform: uppercase;
   font-size: 10px;
@@ -241,7 +242,7 @@ footer{
 }
 
 .contact-title{
-	margin-top: 100px;
+	margin-top: 2px;
 	color: #fff;
 	transition: all 4s ease-in-out;
 }

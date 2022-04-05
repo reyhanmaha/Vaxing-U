@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "signup_layout.html" %}
 {{ super() }}
 <!DOCTYPE HTML>
 <html lang="en">
@@ -19,7 +19,8 @@
             {{ myForm.csrf_token }}
             <div> 
               {{ myForm.username(size=20, class="validate") }}
-              {{ myForm.username.label }}
+              <!--{{ myForm.username.label }}-->
+              <span>username</span>
             </div>
 
             <div>
