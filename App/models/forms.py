@@ -5,14 +5,13 @@ from wtforms.validators import InputRequired, EqualTo, Email
 class SignUp(FlaskForm):
     username = StringField('username', validators=[InputRequired()])
     email = StringField('email', validators=[Email(), InputRequired()])
-    password = PasswordField('New Password', validators=[InputRequired()]) #, EqualTo('confirm', message='Passwords must match')])
-    #confirm  = PasswordField('Repeat Password')
-    submit = SubmitField('Sign Up', render_kw={'class': 'btn waves-effect waves-light white-text'})
+    password = PasswordField('New Password', validators=[InputRequired()])
+    submit = SubmitField('Sign Up')
 
 class LogIn(FlaskForm):
     username = StringField('username', validators=[InputRequired()])
     password = PasswordField('Password', validators=[InputRequired()])
-    submit = SubmitField('Login', render_kw={'class': 'btn waves-effect waves-light white-text'})
+    submit = SubmitField('Login')
 
 class UserData(FlaskForm):
     birthID=IntegerField('birthID', validators=[InputRequired()])
@@ -22,4 +21,4 @@ class UserData(FlaskForm):
     birthPlace = StringField('birthPlace', validators=[InputRequired()])
     DateOfBirth = StringField('DateOfBirth', validators=[InputRequired()])
     Sex = StringField('Sex', validators=[InputRequired()])
-    submit = SubmitField('Submit', render_kw={'class': 'btn waves-effect waves-light white-text'})
+    submit = SubmitField('Submit')
