@@ -1,45 +1,46 @@
 {% extends "signup_layout.html" %}
 {{ super() }}
 
-<!DOCTYPE HTML>
-<html lang="en">
-  <head>
-	  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="/sign_up.css">
-  </head>
-  <body>
-
-  <div class="contact-title">
-	  <h1>WELCOME TO Vaxing You</h1>
-	  <h2>Slogan</h2>
-  </div>
 
     {% block content %}
+    <div class="contact-title">
+      <h1>WELCOME TO Vaxing-U</h1>
+      <h2>Slogan</h2>
+    </div>
+  
+    <section class="request">
+    <div class="signup-Form">
      <form id="myForm" method="POST" action="/signup">
             {{ myForm.csrf_token }}
-            <div> 
-              {{ myForm.username.label }}
+            <div class="inputBox"> 
+             <!-- {{ myForm.username.label }}-->
+
               {{ myForm.username(size=20, class="validate") }}
+               <span>User Name</span>
             </div>
             
-            <div>
-              {{ myForm.email.label }}
+            <div class="inputBox">
+              <!--{{ myForm.email.label }}-->
               {{ myForm.email(size=50, class="validate") }}
+              <span>Email</span>
             </div>
 
-            <div>
-              {{ myForm.password.label }} <p>Must Include uppercase letters and numbers for a strong password</p>
+            <div class="inputBox">
+              <!--{{ myForm.password.label }} <p>Must Include uppercase letters and numbers for a strong password</p>-->
               {{ myForm.password(size=20, class="validate") }}
+              <span>Password (Please Include uppercase letters and numbers)</span>
               
             </div>
 
             <div>
               {{myForm.submit}}
-              <input type="button" onclick='' value="Already have an account?, LogIn">
+              <a href="/login">
+              <input class="btn"  type="button" onclick='' value="Already have an account?, LogIn">
+              </a>
             </div> 
         </form>
+      </div>
+    </section>
     {% endblock %}
     
 

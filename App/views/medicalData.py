@@ -1,6 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, flash
-from flask_login import LoginManager, UserMixin,login_required
+from flask_login import LoginManager, UserMixin,login_required,current_user
 from App.models.forms import UserData
+from App.models.medicalRecords import UserRecords
 from App.controllers.MedDataFunct import create_record
 import json
 #from App.models.user import User
@@ -26,7 +27,10 @@ def PostData():
 @medicalData_views.route("/showData", methods=["GET"])
 @login_required
 def showInfo():
-    person = UserRecords.query.filter_by(birthID=current_identity.id).all()
-    person = [data.toDict() for data in person]
-    return json.dumps(person) 
+    attributes=("BirthID","Firstname","Middlename","Lastname","BirthPlace","DateOfBirth","Sex","Condition1","Condition2","Condition3")
+    
+    user = UserRecords.query.filter_by(user_id=current_user.record).all()
+    print(user['user_id'])
+    user = [medData.toDict() for medData in user]
+    return render_template("ShowUserData.html",attributes=attributes,user=user)
 
