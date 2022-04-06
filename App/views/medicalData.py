@@ -28,9 +28,8 @@ def PostData():
 @login_required
 def showInfo():
     attributes=("BirthID","Firstname","Middlename","Lastname","BirthPlace","DateOfBirth","Sex","Condition1","Condition2","Condition3")
-    
-    user = UserRecords.query.filter_by(user_id=current_user.record).all()
-    print(user['user_id'])
+    user = UserRecords.query.filter_by(user_id=current_user.id).all()
+    #print(user[])
     user = [medData.toDict() for medData in user]
     return render_template("ShowUserData.html",attributes=attributes,user=user)
 

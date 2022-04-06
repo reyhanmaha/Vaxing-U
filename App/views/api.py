@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, flash, url_for
-from flask_login import LoginManager, UserMixin
+from flask_login import LoginManager, UserMixin, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from App.models.forms import SignUp, LogIn
 from App.models.user import User
@@ -51,4 +51,9 @@ def loginAction():
       myForm=LogIn()
       return render_template('login.html',myForm=myForm)
 
-  
+@api_views.route('/logout', methods=['GET'])
+@login_required
+def logout():
+  logout_user()
+  flash('Logged Out!')
+  return redirect('/login') 
