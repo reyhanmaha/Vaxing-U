@@ -24,7 +24,7 @@ def PostData():
     #return redirect("/")
     return render_template('GetuserData.html',myForm=myForm)
 
-@medicalData_views.route("/showData", methods=["GET"])
+@medicalData_views.route("/showData", methods=['GET'])
 @login_required
 def showInfo():
     attributes=("BirthID","Firstname","Middlename","Lastname","BirthPlace","DateOfBirth","Sex","Condition1","Condition2","Condition3")
@@ -33,3 +33,25 @@ def showInfo():
     user = [medData.toDict() for medData in user]
     return render_template("ShowUserData.html",attributes=attributes,user=user)
 
+@medicalData_views.route("/update", methods=['GET'])
+@login_required
+def getUpdate():
+    myForm=UserData()
+    render_template("updateData.html",myForm=myForm)
+
+
+@medicalData_views.route("/updateFile",methods=['POST'])
+@login_required
+def updateData():
+    if myForm.validate_on_submit():
+        data=request.form
+        record = UserRecords.query.filter_by(user_id=current_user.data["birthID"], birthID=birthID).first()
+        if record == None:
+            return 'Invalid birthID'
+        #data = request.get_json()
+            if 'name' in data:
+                record.name = data['name']
+                db.session.add(record)
+                db.session.commit()
+                return 'Updated', 201
+    

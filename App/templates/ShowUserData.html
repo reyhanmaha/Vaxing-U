@@ -30,7 +30,24 @@
       {% endfor %}
     </table>   
     {% endif %}
+
+    <form id="myForm" method="PUT" action="/update">
+      {{ myForm.csrf_token }}
+
+      <div> 
+          {{ myForm.birthID(size=20, class="validate") }}
+          {{ myForm.birthID.label }}
+      </div>
+      <div>
+        {{myForm.submit}}
+      </div> 
+
+    </form>
+
+
    {% endblock %}
+
+
     
 
     
