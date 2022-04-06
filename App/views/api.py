@@ -1,6 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, flash, url_for
 from flask_login import LoginManager, UserMixin
-#from flask_jwt import jwt_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from App.models.forms import SignUp, LogIn
 from App.models.user import User
@@ -45,7 +44,7 @@ def loginAction():
       data = request.form
       user = authenticate(data["username"],data["password"])
       if user and user.check_password(data['password']):
-        login_user(user,remember=False)
+        login_user(user,remember=True)
         flash('You have Logged in successfully.')
         return redirect("/mainPage")
       flash('Invalid credentials')

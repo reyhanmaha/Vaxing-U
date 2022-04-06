@@ -21,4 +21,7 @@ class UserData(FlaskForm):
     birthPlace = StringField('birthPlace', validators=[InputRequired()])
     DateOfBirth = StringField('DateOfBirth', validators=[InputRequired()])
     Sex = StringField('Sex', validators=[InputRequired()])
+    Condition1=StringField('Condition1')
+    Condition2=StringField('Condition2')
+    Condition3=StringField('Condition3')
     submit = SubmitField('Submit')
