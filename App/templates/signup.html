@@ -20,18 +20,19 @@
      <form id="myForm" method="POST" action="/signup">
             {{ myForm.csrf_token }}
             <div> 
-              {{ myForm.username(size=20, class="validate") }}
               {{ myForm.username.label }}
+              {{ myForm.username(size=20, class="validate") }}
             </div>
             
             <div>
-              {{ myForm.email(size=50, class="validate") }}
               {{ myForm.email.label }}
+              {{ myForm.email(size=50, class="validate") }}
             </div>
 
             <div>
-              {{ myForm.password(size=20, class="validate") }}
               {{ myForm.password.label }} <p>Must Include uppercase letters and numbers for a strong password</p>
+              {{ myForm.password(size=20, class="validate") }}
+              
             </div>
 
             <div>
