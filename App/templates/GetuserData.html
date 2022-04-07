@@ -1,78 +1,83 @@
 {% extends "layout.html" %}
 {{ super() }}
 
-<!DOCTYPE HTML>
-<html lang="en">
-  <head>
-	  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="/sign_up.css">
-  </head>
-  <body>
-
-  <div class="contact-title">
-	  <h1>WELCOME TO Vaxing You</h1>
-	  <h2>Please Fill Out The Medical Form To Continue</h2>
-  </div>
 
     {% block content %}
+    <div class="contact-title">
+      <h1>Thank You For Choosing Vaxing-U</h1>
+      <h2>Please Fill Out The Medical Form To Continue</h2>
+    </div>
+
+    <section class="request">
+    <div class="signup-Form">
      <form id="myForm" method="POST" action="/getData">
             {{ myForm.csrf_token }}
 
-            <div> 
+            <div class="inputBox">  
                 {{ myForm.birthID(size=20, class="validate") }}
-                {{ myForm.birthID.label }}
+               <!-- {{ myForm.birthID.label }}-->
+               <span>Birth ID</span>
             </div>
 
-            <div> 
+            <div class="inputBox"> 
               {{ myForm.firstname(size=20, class="validate") }}
-              {{ myForm.firstname.label }}
+              <!--{{ myForm.firstname.label }}-->
+              <span>First Name</span>
             </div>
 
-            <div> 
+            <div class="inputBox"> 
                 {{ myForm.middlename(size=20, class="validate") }}
-                {{ myForm.middlename.label }}
+                <!--{{ myForm.middlename.label }}-->
+                <span>Middle Name</span>
               </div>
             
-            <div>
+            <div class="inputBox">
               {{ myForm.lastname(size=20, class="validate") }}
-              {{ myForm.lastname.label }}
+              <!--{{ myForm.lastname.label }}-->
+              <span>Last Name</span>
             </div>
 
-            <div>
+            <div class="inputBox">
               {{ myForm.birthPlace(size=120, class="validate") }}
-              {{ myForm.birthPlace.label }}
+              <!--{{ myForm.birthPlace.label }}-->
+              <span>Place of Birth</span>
             </div>
 
-            <div>
+            <div class="inputBox">
                 {{ myForm.DateOfBirth(size=20, class="validate") }}
-                {{ myForm.DateOfBirth.label }}
+                <!--{{ myForm.DateOfBirth.label }}-->
+                <span>Date of Birth</span>
             </div>
 
-            <div>
+            <div class="inputBox">
                 {{ myForm.Sex(size=20, class="validate") }}
-                {{ myForm.Sex.label }}
+                <!--{{ myForm.Sex.label }}-->
+                <span>Sex (Gender)</span>
             </div>
 
-            <div>
+            <div class="inputBox">
               {{ myForm.Condition1(size=50, class="validate") }}
-              {{ myForm.Condition1.label }}
+              <!--{{ myForm.Condition1.label }}-->
+              <span>Condition One</span>
           </div>
 
-          <div>
+          <div class="inputBox">
             {{ myForm.Condition2(size=50, class="validate") }}
-            {{ myForm.Condition2.label }}
+            <!--{{ myForm.Condition2.label }}-->
+            <span>Condition Two</span>
         </div>
-        <div>
+        <div class="inputBox">
           {{ myForm.Condition3(size=50, class="validate") }}
-          {{ myForm.Condition3.label }}
+          <!--{{ myForm.Condition3.label }}-->
+          <span>Condition Three</span>
       </div>
 
             <div>
               {{myForm.submit}}
             </div> 
         </form>
+      </div>
+    </section>
     {% endblock %}
     
 

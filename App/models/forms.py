@@ -13,6 +13,14 @@ class LogIn(FlaskForm):
     password = PasswordField('Password', validators=[InputRequired()])
     submit = SubmitField('Login')
 
+class Booking(FlaskForm):
+    BookingID=IntegerField('bookingID', validators=[InputRequired()])
+    vaccineLoc= StringField('vaccineLoc', validators=[InputRequired()])
+    vaccineType= StringField('vaccineType', validators=[InputRequired()])
+    date= StringField('date', validators=[InputRequired()])
+    time= StringField('time', validators=[InputRequired()])
+
+
 class UserData(FlaskForm):
     birthID=IntegerField('birthID', validators=[InputRequired()])
     firstname = StringField('firstname', validators=[InputRequired()])
