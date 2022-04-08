@@ -6,19 +6,20 @@ class SignUp(FlaskForm):
     username = StringField('username', validators=[InputRequired()])
     email = StringField('email', validators=[Email(), InputRequired()])
     password = PasswordField('New Password', validators=[InputRequired()])
-    submit = SubmitField('Sign Up')
+    submit = SubmitField('Sign Up', render_kw={'class': 'btn waves-effect waves-light white-text'})
 
 class LogIn(FlaskForm):
     username = StringField('username', validators=[InputRequired()])
     password = PasswordField('Password', validators=[InputRequired()])
-    submit = SubmitField('Login')
+    submit = SubmitField('Login', render_kw={'class': 'btn waves-effect waves-light white-text'})
 
-class Booking(FlaskForm):
-    BookingID=IntegerField('bookingID', validators=[InputRequired()])
+class MakeBooking(FlaskForm):
+    #BookingID=IntegerField('bookingID', validators=[InputRequired()])
     vaccineLoc= StringField('vaccineLoc', validators=[InputRequired()])
     vaccineType= StringField('vaccineType', validators=[InputRequired()])
     date= StringField('date', validators=[InputRequired()])
     time= StringField('time', validators=[InputRequired()])
+    submit= SubmitField('Book Appointment', render_kw={'class': 'btn waves-effect waves-light white-text'})
 
 
 class UserData(FlaskForm):
@@ -32,4 +33,4 @@ class UserData(FlaskForm):
     Condition1=StringField('Condition1')
     Condition2=StringField('Condition2')
     Condition3=StringField('Condition3')
-    submit = SubmitField('Submit')
+    submit = SubmitField('Submit', render_kw={'class': 'btn waves-effect waves-light white-text'})

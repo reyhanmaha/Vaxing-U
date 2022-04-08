@@ -29,8 +29,9 @@ def PostData():
 def showInfo():
     attributes=("BirthID","Firstname","Middlename","Lastname","BirthPlace","DateOfBirth","Sex","Condition1","Condition2","Condition3")
     user = UserRecords.query.filter_by(user_id=current_user.id).all()
-    #print(user[])
+    
     user = [medData.toDict() for medData in user]
+    print(user[2],user[1],user[4])
     return render_template("ShowUserData.html",attributes=attributes,user=user)
 
 @medicalData_views.route("/update", methods=['GET'])
