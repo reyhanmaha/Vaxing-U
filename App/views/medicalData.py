@@ -17,7 +17,8 @@ def PostData():
     myForm = UserData()
     if myForm.validate_on_submit():
         formData=request.form
-        create_record(formData["birthID"],formData["firstname"],formData["middlename"],formData["lastname"],formData["birthPlace"],formData["DateOfBirth"],formData["Sex"],formData["Sex"],formData["Condition1"],formData["Condition2"],formData["Condition3"])
+        create_record(formData["birthID"],formData["firstname"],formData["middlename"],formData["lastname"],formData["birthPlace"],formData["DateOfBirth"],formData["Sex"],formData["Condition1"],formData["Condition2"],formData["Condition3"])
+        #print(formData['birthID'],formData['firstname'],formData['Condition1'],formData['Sex'])
         flash('Your information has been recorded!')
         return redirect("/login")
     flash('Error invalid input!')

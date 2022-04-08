@@ -10,7 +10,7 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120),unique=True, nullable=False)
     record=db.relationship('UserRecords', backref='User', uselist=False)
-    booking=db.relationship('Appointments', backref='User', lazy=True)
+    booking=db.relationship('Appointments', backref='User', lazy=True,cascade="all, delete-orphan")
 
     def __init__(self,id,username,email,password):
         self.id=id
