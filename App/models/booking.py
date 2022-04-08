@@ -10,7 +10,7 @@ class Appointments(db.Model):
     time=db.Column(db.String(100),unique=True, nullable=False)
     user_id= db.Column(db.String(100), db.ForeignKey(User.id))
 
-    def __init__(self,bookingID,vaccineLoc,vaccineType,date, time,user_id):
+    def __init__(self,bookingID,vaccineLoc,vaccineType,date,time,user_id):
         self.bookingID=bookingID
         self.vaccineLoc=vaccineLoc
         self.vaccineType=vaccineType

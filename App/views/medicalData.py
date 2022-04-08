@@ -31,7 +31,7 @@ def showInfo():
     user = UserRecords.query.filter_by(user_id=current_user.id).all()
     
     user = [medData.toDict() for medData in user]
-    print(user[2],user[1],user[4])
+    #print(firstname)
     return render_template("ShowUserData.html",attributes=attributes,user=user)
 
 @medicalData_views.route("/update", methods=['GET'])

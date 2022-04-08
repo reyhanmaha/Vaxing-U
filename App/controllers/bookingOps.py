@@ -2,7 +2,7 @@ from App.models import Appointments
 from App.database import db
 import uuid
 
-def create_appointment(bookingID,vaccineLoc,vaccineType,date,time,user_id):
+def create_appointment(vaccineLoc,vaccineType,date,time,user_id):
     newBooking= Appointments(bookingID=str(uuid.uuid4()),vaccineLoc=vaccineLoc,vaccineType=vaccineType,date=date,time=time,user_id=user_id)    
     #print(newrecord["birthID"],newrecord["firstname"],newrecord["middlename"],newrecord["lastname"],newrecord["birthPlace"],newrecord["DateOfBirth"],newrecord["Sex"])
     db.session.add(newBooking)

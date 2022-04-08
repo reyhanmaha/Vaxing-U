@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{{ super() }}
+
+
+    {% block content %}
+    <div class="contact-title">
+      <h1>Thank You For Choosing Vaxing-U</h1>
+      <h2>Please Fill Out The Medical Form To Continue</h2>
+    </div>
+
+    <section class="request">
+    <div class="signup-Form">
+     <form id="myForm" method="POST" action="/getBooking">
+            {{ myForm.csrf_token }}
+
+            <div class="inputBox">  
+                {{ myForm.vaccineLoc(size=100, class="validate") }}
+               
+               <span>Vaccine Location</span>
+            </div>
+
+            <div class="inputBox"> 
+              {{ myForm.vaccineType(size=100, class="validate") }}
+              
+              <span>Vaccine Type</span>
+            </div>
+
+            <div class="inputBox"> 
+                {{ myForm.date(size=30, class="validate") }}
+               
+                <span>date(DD/MM/YY)</span>
+              </div>
+            
+            <div class="inputBox">
+              {{ myForm.time(size=30, class="validate") }}
+              
+              <span>time</span>
+            </div>
+
+            <div>
+              {{myForm.submit}}
+            </div> 
+        </form>
+      </div>
+    </section>
+    {% endblock %}
+    
+
+    
+   

@@ -17,6 +17,7 @@ from App.controllers import (
 )
 
 from App.views import (
+    booking_views,
     mainPage_views,
     medicalData_views,
     user_views,
@@ -24,6 +25,7 @@ from App.views import (
 )
 
 views = [
+    booking_views,
     mainPage_views,
     medicalData_views,
     user_views,
