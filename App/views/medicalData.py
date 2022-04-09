@@ -2,6 +2,7 @@ from flask import Blueprint, redirect, render_template, request, send_from_direc
 from flask_login import LoginManager, UserMixin,login_required,current_user
 from App.models.forms import UserData
 from App.models.medicalRecords import UserRecords
+from App.models.user import User
 from App.controllers.MedDataFunct import create_record
 import json
 #from App.models.user import User
@@ -17,11 +18,11 @@ def PostData():
     myForm = UserData()
     if myForm.validate_on_submit():
         formData=request.form
-        
+        #user=request.user.id
         create_record(formData["birthID"],formData["firstname"],
         formData["middlename"],formData["lastname"],formData["birthPlace"],
         formData["DateOfBirth"],formData["Sex"],formData["Condition1"],
-        formData["Condition2"],formData["Condition3"])
+        formData["Condition2"],formData["Condition3"])#,user["id"])
 
         #print(formData['birthID'],formData['firstname'],formData['Condition1'],formData['Sex'])
         flash('Your information has been recorded!')
@@ -29,6 +30,7 @@ def PostData():
     flash('Error invalid input!')
     #return redirect("/")
     return render_template('GetuserData.html',myForm=myForm)
+
 
 @medicalData_views.route("/showData", methods=['GET'])
 @login_required
