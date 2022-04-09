@@ -3,7 +3,7 @@ from App.views.api import LoginManager, UserMixin,login_required,current_user
 from App.models.forms import UserData
 from App.models.medicalRecords import UserRecords
 from App.models.user import User
-from App.controllers.MedDataFunct import create_record
+from App.controllers.MedDataFunct import create_record, update_record
 import json
 #from App.models.user import User
 medicalData_views = Blueprint('medicalData_views', __name__, template_folder='../templates')
@@ -45,21 +45,20 @@ def showInfo():
 @login_required
 def getUpdate():
     myForm=UserData()
-    render_template("updateData.html",myForm=myForm)
+    return render_template("updateData.html",myForm=myForm)
 
 
 @medicalData_views.route("/updateFile",methods=['POST'])
 @login_required
 def updateData():
+    myForm=UserData()
     if myForm.validate_on_submit():
         data=request.form
-        record = UserRecords.query.filter_by(user_id=current_user.data["birthID"], birthID=birthID).first()
+        record = UserRecords.query.filter_by(user_id=current_user.id).first()
         if record == None:
-            return 'Invalid birthID'
-        #data = request.get_json()
-            if 'name' in data:
-                record.name = data['name']
-                db.session.add(record)
-                db.session.commit()
-                return 'Updated', 201
-    
+            return redirect("/mainPage")
+        update_record(record,data["birthID"],data["firstname"],data["middlename"],data["lastname"],
+                        data["birthPlace"],data["DateOfBirth"],data["Sex"],
+                        data["Condition1"],data["Condition2"],data["Condition3"],user_id=current_user.id)
+        return redirect("/showData")
+        
