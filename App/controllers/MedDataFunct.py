@@ -11,13 +11,13 @@ def create_record(birthID,firstname,middlename,lastname,birthPlace,DateOfBirth,S
                             lastname=lastname,birthPlace=birthPlace,DateOfBirth=DateOfBirth,Sex=Sex,
                             Condition1=Condition1,Condition2=Condition2,Condition3=Condition3,user_id=user_id) #user_id=user_id)    
     #print(newrecord["birthID"],newrecord["firstname"],newrecord["middlename"],newrecord["lastname"],newrecord["birthPlace"],newrecord["DateOfBirth"],newrecord["Sex"],newrecord['user_id'])
-    print(newrecord)
+    #print(user_id)
     db.session.add(newrecord)
     db.session.commit()
 
 def get_all_users_json():
     records = UserRecords.query.all()
-    if not users:
+    if not records:
         return []
     records = [record.toDict() for record in records]
     return users

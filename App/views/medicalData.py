@@ -24,6 +24,7 @@ def PostData():
         formData["middlename"],formData["lastname"],formData["birthPlace"],
         formData["DateOfBirth"],formData["Sex"],formData["Condition1"],
         formData["Condition2"],formData["Condition3"],user_id=current_user.id)
+        #print(current_user.id)
         flash('Your information has been recorded!')
         return redirect("/mainPage")
     flash('Error invalid input!')
@@ -34,13 +35,11 @@ def PostData():
 @medicalData_views.route("/showData", methods=['GET'])
 @login_required
 def showInfo():
-    attributes=("BirthID","Firstname","Middlename","Lastname","BirthPlace","DateOfBirth","Sex","Condition1","Condition2","Condition3")
-    user = UserRecords.query.filter_by(user_id=current_user.id).first()
-    if user is None:
+    record = UserRecords.query.filter_by(user_id=current_user.id).first()
+    if record is None:
         data=[]
-    #print(user['birthID'], user['user_id'])
-    data = [medData.toDict() for medData in user]
-    return render_template("ShowUserData.html",attributes=attributes,data=data)
+    data=record.toDict()
+    return render_template("ShowUserData.html",data=data)
 
 @medicalData_views.route("/update", methods=['GET'])
 @login_required

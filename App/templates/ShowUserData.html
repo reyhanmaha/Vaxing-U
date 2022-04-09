@@ -8,26 +8,46 @@
     {% if current_user.is_authenticated %}
     
     <div class="contact-title">
-	  <h1>WELCOME TO Vaxing You</h1>
+	  <h1>Your Medical Information</h1>
     </div>
 
     <section class="request">
     <div class="signup-Form">
     <table>
-      <thead>
       <tr>
-        {% for attribute in attributes %}
-        <th>{{ attribute }}</th>
-        {% endfor %}
+        <th>Birth ID:</th>
+        <th>{{ data.birthID }}</th>
       </tr>
-      </thead>
-      <tbody>
-       {% for data in user %}
       <tr>
-        <td>{{ data }}</td>
+        <th>First Name:</th>
+        <th>{{ data.firstname }}</th>
       </tr>
-      {% endfor %}
-    </tbody>
+      <th>Middle Name:</th>
+        <th>{{ data.middlename }}</th>
+      </tr>
+      <th>Last Name:</th>
+        <th>{{ data.lastname }}</th>
+      </tr>
+      <th>Place Of Birth:</th>
+        <th>{{ data.birthPlace }}</th>
+      </tr>
+      <th>Date Of Birth:</th>
+        <th>{{ data.DateOfBirth }}</th>
+      </tr>
+      <th>Sex:</th>
+        <th>{{ data.Sex }}</th>
+      </tr>
+      <th>Condition:</th>
+        <th>{{ data.Condition1 }}</th>
+      </tr>
+      <th>Condition:</th>
+        <th>{{ data.Condition2 }}</th>
+      </tr>
+      <th>Condition:</th>
+        <th>{{ data.Condition3 }}</th>
+      </tr>
+      
+   
     </table>   
     {% endif %} 
       <div>
@@ -38,25 +58,3 @@
     </div>
     </section>
     {% endblock %}
-<!--
-    <form id="myForm" method="PUT" action="/update">
-      {{ myForm.csrf_token }}
-
-      <div> 
-          {{ myForm.birthID(size=20, class="validate") }}
-          {{ myForm.birthID.label }}
-      </div>
-      <div>
-        {{myForm.submit}}
-      </div> 
-
-    </form>-->
-
-
-  
-
-
-    
-
-    
-   
