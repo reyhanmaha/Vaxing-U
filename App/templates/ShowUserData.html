@@ -1,35 +1,42 @@
-{% extends "layout.html" %}
+{% extends "signup_layout.html" %}
 {{ super() }}
 
-<!DOCTYPE HTML>
-<html lang="en">
-  <head>
-	  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="/sign_up.css">
-  </head>
-  <body>
 
-  <div class="contact-title">
-	  <h1>WELCOME TO Vaxing You</h1>
-  </div>
+  
 
   {% block content %}
     {% if current_user.is_authenticated %}
+    
+    <div class="contact-title">
+	  <h1>WELCOME TO Vaxing You</h1>
+    </div>
+
+    <section class="request">
+    <div class="signup-Form">
     <table>
+      <thead>
       <tr>
         {% for attribute in attributes %}
         <th>{{ attribute }}</th>
         {% endfor %}
       </tr>
+      </thead>
+      <tbody>
        {% for data in user %}
       <tr>
         <td>{{ data }}</td>
       </tr>
       {% endfor %}
+    </tbody>
     </table>   
     {% endif %} 
+      <div>
+        <a href="/update">
+          <input class="btn"  type="button" onclick='' value="Change Medical Data">
+          </a>
+      </div>
+    </div>
+    </section>
     {% endblock %}
 <!--
     <form id="myForm" method="PUT" action="/update">

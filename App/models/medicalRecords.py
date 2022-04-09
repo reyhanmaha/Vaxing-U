@@ -15,7 +15,7 @@ class UserRecords(db.Model):
     user_id= db.Column(db.String(120), db.ForeignKey(User.id))
 
     def __init__(self,birthID,firstname,middlename,lastname, 
-                birthPlace,DateOfBirth,Sex,Condition1,Condition2,Condition3):#,user_id):
+                birthPlace,DateOfBirth,Sex,Condition1,Condition2,Condition3,user_id):
         self.birthID=birthID
         self.firstname=firstname
         self.middlename=middlename
@@ -26,7 +26,7 @@ class UserRecords(db.Model):
         self.Condition1=Condition1
         self.Condition2=Condition2
         self.Condition3=Condition3
-        #self.user_id=user_id
+        self.user_id=user_id
 
     def toDict(self):
         return{

@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, flash, url_for
-from flask_login import LoginManager, UserMixin, logout_user, login_required
+from flask_login import LoginManager, UserMixin, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from App.models.forms import SignUp, LogIn
 from App.models.user import User
@@ -26,7 +26,7 @@ def signupUser():
     formData=request.form
     create_user(formData["username"],formData["email"],formData["password"])
     flash('Your Account Has Been Created!')
-    return redirect("/dataForm")
+    return redirect("/login")
   flash('Error invalid input!')
   return redirect("/")
 

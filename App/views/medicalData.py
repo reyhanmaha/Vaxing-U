@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, flash
-from flask_login import LoginManager, UserMixin,login_required,current_user
+from App.views.api import LoginManager, UserMixin,login_required,current_user
 from App.models.forms import UserData
 from App.models.medicalRecords import UserRecords
 from App.models.user import User
@@ -14,21 +14,20 @@ def getData():
     return render_template('GetuserData.html',myForm=myForm)
 
 @medicalData_views.route('/getData', methods=['POST'])
+@login_required
 def PostData():
     myForm = UserData()
     if myForm.validate_on_submit():
         formData=request.form
-        #user=request.user.id
+        
         create_record(formData["birthID"],formData["firstname"],
         formData["middlename"],formData["lastname"],formData["birthPlace"],
         formData["DateOfBirth"],formData["Sex"],formData["Condition1"],
-        formData["Condition2"],formData["Condition3"])#,user["id"])
-
-        #print(formData['birthID'],formData['firstname'],formData['Condition1'],formData['Sex'])
+        formData["Condition2"],formData["Condition3"],user_id=current_user.id)
         flash('Your information has been recorded!')
-        return redirect("/login")
+        return redirect("/mainPage")
     flash('Error invalid input!')
-    #return redirect("/")
+    
     return render_template('GetuserData.html',myForm=myForm)
 
 
@@ -36,11 +35,12 @@ def PostData():
 @login_required
 def showInfo():
     attributes=("BirthID","Firstname","Middlename","Lastname","BirthPlace","DateOfBirth","Sex","Condition1","Condition2","Condition3")
-    user = UserRecords.query.filter_by(user_id=current_user.id).all()
-    
-    user = [medData.toDict() for medData in user]
-    #print(firstname)
-    return render_template("ShowUserData.html",attributes=attributes,user=user)
+    user = UserRecords.query.filter_by(user_id=current_user.id).first()
+    if user is None:
+        data=[]
+    #print(user['birthID'], user['user_id'])
+    data = [medData.toDict() for medData in user]
+    return render_template("ShowUserData.html",attributes=attributes,data=data)
 
 @medicalData_views.route("/update", methods=['GET'])
 @login_required

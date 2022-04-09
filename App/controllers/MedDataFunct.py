@@ -4,13 +4,14 @@ from App.models.user import User
 from App.database import db
 
 
-def create_record(birthID,firstname,middlename,lastname,birthPlace,DateOfBirth,Sex,Condition1,Condition2,Condition3):
+def create_record(birthID,firstname,middlename,lastname,birthPlace,DateOfBirth,Sex,Condition1,Condition2,Condition3,user_id):
 #,user_id):
     
     newrecord= UserRecords(birthID=birthID,firstname=firstname,middlename=middlename,
                             lastname=lastname,birthPlace=birthPlace,DateOfBirth=DateOfBirth,Sex=Sex,
-                            Condition1=Condition1,Condition2=Condition2,Condition3=Condition3)#,user_id=user.id) #user_id=user_id)    
-    #print(newrecord["birthID"],newrecord["firstname"],newrecord["middlename"],newrecord["lastname"],newrecord["birthPlace"],newrecord["DateOfBirth"],newrecord["Sex"])
+                            Condition1=Condition1,Condition2=Condition2,Condition3=Condition3,user_id=user_id) #user_id=user_id)    
+    #print(newrecord["birthID"],newrecord["firstname"],newrecord["middlename"],newrecord["lastname"],newrecord["birthPlace"],newrecord["DateOfBirth"],newrecord["Sex"],newrecord['user_id'])
+    print(newrecord)
     db.session.add(newrecord)
     db.session.commit()
 

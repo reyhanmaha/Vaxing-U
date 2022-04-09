@@ -3,6 +3,7 @@
 
 
     {% block content %}
+    {% if current_user.is_authenticated %}
     <div class="contact-title">
       <h1>Thank You For Choosing Vaxing-U</h1>
       <h2>Please Fill Out The Medical Form To Continue</h2>
@@ -43,6 +44,7 @@
         </form>
       </div>
     </section>
+    {% endif %}
     {% endblock %}
     
 

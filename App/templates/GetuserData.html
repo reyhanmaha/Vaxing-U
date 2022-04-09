@@ -7,7 +7,7 @@
       <h1>Thank You For Choosing Vaxing-U</h1>
       <h2>Please Fill Out The Medical Form To Continue</h2>
     </div>
-
+    {% if current_user.is_authenticated %}
     <section class="request">
     <div class="signup-Form">
      <form id="myForm" method="POST" action="/getData">
@@ -74,10 +74,14 @@
 
             <div>
               {{myForm.submit}}
+              <a href="/showData">
+                <input class="btn"  type="button" onclick='' value="Review Medical Info">
+                </a>
             </div> 
         </form>
       </div>
     </section>
+    {% endif %}
     {% endblock %}
     
 
