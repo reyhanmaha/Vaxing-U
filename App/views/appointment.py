@@ -19,8 +19,7 @@ def PostData():
     myForm = MakeBooking()
     if myForm.validate_on_submit():
         bookingData=request.form
-        create_appointment(bookingData["vaccineLoc"],bookingData["vaccineType"],bookingData["date"],bookingData["time"])
+        create_appointment(bookingData["vaccineLoc"],bookingData["vaccineType"],bookingData["date"],bookingData["time"],user_id=current_user.id)
         return redirect("/mainPage")
     flash('Error invalid input!')
-    #return redirect("/")
     return redirect("/mainPage")

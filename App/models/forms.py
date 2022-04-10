@@ -14,7 +14,6 @@ class LogIn(FlaskForm):
     submit = SubmitField('Login', render_kw={'class': 'btn waves-effect waves-light white-text'})
 
 class MakeBooking(FlaskForm):
-    #BookingID=IntegerField('bookingID', validators=[InputRequired()])
     vaccineLoc= StringField('vaccineLoc', validators=[InputRequired()])
     vaccineType= StringField('vaccineType', validators=[InputRequired()])
     date= StringField('date', validators=[InputRequired()])
