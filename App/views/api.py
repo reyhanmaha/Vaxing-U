@@ -26,7 +26,8 @@ def signupUser():
     formData=request.form
     create_user(formData["username"],formData["email"],formData["password"])
     flash('Your Account Has Been Created!')
-    return redirect("/login")
+    #return redirect("/login")
+    return redirect(url_for('api_views.getLogin'))
   flash('Error invalid input!')
   return redirect("/")
 
