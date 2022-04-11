@@ -39,11 +39,11 @@
   }
   
   .card1{
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(img/tile.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
   }
   
   .card2{
-     background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(img/tile.jpg);
+     background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
   }
   
   .card:hover{
@@ -61,6 +61,7 @@
   }
   p{
     color: #fff;
+    height: 25px;
   }
   
   body {

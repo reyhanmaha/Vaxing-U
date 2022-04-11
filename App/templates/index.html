@@ -11,6 +11,7 @@
         <h1>Welcome to Vaxing-U</h1>
         <p>Description</p>
     </div>
+</div>
 
     
 
@@ -55,14 +56,18 @@
         </div>
     </div>
     </section>
-    <h1>Current Covid-19 Statistics</h1>
-    <p>Country: {{data.response[0]['country']}}</p>
-    <p>Population: {{data.response[0]['population']}}</p>
-    <p>Active Cases: {{data.response[0]['cases']['active']}}</p>
-    <p>Critical Cases: {{data.response[0]['cases']['critical']}}</p>
-    <p>Recovered Cases: {{data.response[0]['cases']['recovered']}}</p>
-    <p>Total Cases: {{data.response[0]['cases']['total']}}</p>
-    <p>Total Deaths: {{data.response[0]['deaths']['total']}}</p>
-    <p>Active Cases: {{data.response[0]['tests']['total']}}</p>
-    <p>Active Cases: {{data.response[0]['day']}}</p>
+
+    <div class="card_api card1">
+        <h1>Current Covid-19 Statistics</h1>
+        <p>Country: {{data.response[0]['country']}}</p>
+        <p>Population: {{data.response[0]['population']}}</p>
+        <p>Active Cases: {{data.response[0]['cases']['active']}}</p>
+        <p>Critical Cases: {{data.response[0]['cases']['critical']}}</p>
+        <p>Recovered Cases: {{data.response[0]['cases']['recovered']}}</p>
+        <p>Total Cases: {{data.response[0]['cases']['total']}}</p>
+        <p>Total Deaths: {{data.response[0]['deaths']['total']}}</p>
+        <p>Active Cases: {{data.response[0]['tests']['total']}}</p>
+        <p>Active Cases: {{data.response[0]['day']}}</p>
+    </div>
+
 {% endblock %}
