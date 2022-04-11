@@ -25,9 +25,9 @@ def PostData():
         formData["DateOfBirth"],formData["Sex"],formData["Condition1"],
         formData["Condition2"],formData["Condition3"],user_id=current_user.id)
         flash('Your information has been recorded!')
-        return redirect("/mainPage")
+        #return redirect("/mainPage")
+        return redirect(url_for('mainPage_views.show_main'))
     flash('Error invalid input!')
-    
     return render_template('GetuserData.html',myForm=myForm)
 
 
@@ -55,9 +55,11 @@ def updateData():
         data=request.form
         record = UserRecords.query.filter_by(user_id=current_user.id).first()
         if record == None:
-            return redirect("/mainPage")
+            #return redirect("/mainPage")
+            return redirect(url_for('mainPage_views.show_main'))
         update_record(record,data["birthID"],data["firstname"],data["middlename"],data["lastname"],
                         data["birthPlace"],data["DateOfBirth"],data["Sex"],
                         data["Condition1"],data["Condition2"],data["Condition3"],user_id=current_user.id)
-        return redirect("/showData")
+        #return redirect("/showData")
+        return redirect(url_for('medicalData_views.showInfo'))
         

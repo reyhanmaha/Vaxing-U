@@ -29,7 +29,8 @@ def signupUser():
     #return redirect("/login")
     return redirect(url_for('api_views.getLogin'))
   flash('Error invalid input!')
-  return redirect("/")
+  #return redirect("/")
+  return redirect(url_for('api_views.signup'))
 
 
 @api_views.route('/login', methods=['GET'])
@@ -47,7 +48,8 @@ def loginAction():
       if user and user.check_password(data['password']):
         login_user(user,remember=True)
         flash('You have Logged in successfully.')
-        return redirect("/mainPage")
+        #return redirect("/mainPage")
+        return redirect(url_for('mainPage_views.show_main'))
       flash('Invalid credentials')
       myForm=LogIn()
       return render_template('login.html',myForm=myForm)
@@ -57,4 +59,5 @@ def loginAction():
 def logout():
   logout_user()
   flash('Logged Out!')
-  return redirect('/login') 
+  #return redirect('/login')
+  return redirect(url_for('api_views.getLogin')) 
