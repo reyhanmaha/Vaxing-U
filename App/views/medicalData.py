@@ -5,7 +5,7 @@ from App.models.medicalRecords import UserRecords
 from App.models.user import User
 from App.controllers.MedDataFunct import create_record, update_record
 import json
-#from App.models.user import User
+
 medicalData_views = Blueprint('medicalData_views', __name__, template_folder='../templates')
 
 @medicalData_views.route('/dataForm', methods=['GET'])
@@ -24,7 +24,6 @@ def PostData():
         formData["middlename"],formData["lastname"],formData["birthPlace"],
         formData["DateOfBirth"],formData["Sex"],formData["Condition1"],
         formData["Condition2"],formData["Condition3"],user_id=current_user.id)
-        #print(current_user.id)
         flash('Your information has been recorded!')
         return redirect("/mainPage")
     flash('Error invalid input!')

@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, IntegerField
 from wtforms.validators import InputRequired, EqualTo, Email
+from wtforms import DateField
 
 class SignUp(FlaskForm):
     username = StringField('username', validators=[InputRequired()])
@@ -27,6 +28,7 @@ class UserData(FlaskForm):
     middlename = StringField('middlename')
     lastname = StringField('lastname', validators=[InputRequired()])
     birthPlace = StringField('birthPlace', validators=[InputRequired()])
+    #DateOfBirth = DateField('DateOfBirth',format='%d-%m-%Y', validators=[InputRequired()])
     DateOfBirth = StringField('DateOfBirth', validators=[InputRequired()])
     Sex = StringField('Sex', validators=[InputRequired()])
     Condition1=StringField('Condition1')

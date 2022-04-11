@@ -2,9 +2,9 @@ from flask import Blueprint, redirect, render_template, request, send_from_direc
 from flask_login import LoginManager, UserMixin,login_required,current_user
 from App.models.forms import MakeBooking
 from App.models.booking import Appointments
-from App.controllers.bookingOps import create_appointment
+from App.controllers.bookingOps import create_appointment, cancel_all_bookings
 import json
-#from App.models.user import User
+
 booking_views = Blueprint('booking_views', __name__, template_folder='../templates')
 
 @booking_views.route('/booking', methods=['GET'])
@@ -23,3 +23,12 @@ def PostData():
         return redirect("/mainPage")
     flash('Error invalid input!')
     return redirect("/mainPage")
+
+@booking_views.route('/cancelBookings', methods=['GET'])
+@login_required
+def cancel_bookings():
+    bookings=Appointments.query.filter_by(user_id=current_user.id).all()
+    if bookings:
+        cancel_all_bookings(bookings)
+        return redirect('/mainPage')
+    return redirect('/mainPage')
