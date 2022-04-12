@@ -2,7 +2,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from App.database import db
 from sqlalchemy.dialects.postgresql import UUID
 from flask_login import UserMixin
-#from App.models.medicalRecords import UserRecords
 
 class User(db.Model,UserMixin):
     id = db.Column(db.String(120), primary_key=True)

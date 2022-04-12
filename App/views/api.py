@@ -26,11 +26,9 @@ def signupUser():
     formData=request.form
     create_user(formData["username"],formData["email"],formData["password"])
     flash('Your Account Has Been Created!')
-    #return redirect("/login")
     redirect(url_for('api_views.getLogin'))
     return redirect(url_for('api_views.getLogin'))
   flash('Error invalid input!')
-  #return redirect("/")
   return redirect(url_for('api_views.signup'))
 
 
@@ -49,7 +47,6 @@ def loginAction():
       if user and user.check_password(data['password']):
         login_user(user,remember=True)
         flash('You have Logged in successfully.')
-        #return redirect("/mainPage")
         return redirect(url_for('mainPage_views.show_main'))
       flash('Invalid credentials')
       myForm=LogIn()
@@ -60,5 +57,4 @@ def loginAction():
 def logout():
   logout_user()
   flash('Logged Out!')
-  #return redirect('/login')
   return redirect(url_for('api_views.getLogin')) 

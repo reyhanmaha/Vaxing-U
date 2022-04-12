@@ -61,7 +61,7 @@
   }
   p{
     color: #fff;
-    height: 25px;
+    
   }
   
   body {
@@ -201,7 +201,7 @@
   }
   
   
-  @media (max-width: 991px){
+  @media (max-width: 480px){
   
   .logo{
     font-size: 20px;
@@ -232,13 +232,16 @@
   }
   
   header .navbar{
-    width: auto;
+    /*width: 430px;
     margin: auto;
     padding: 35px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    float: right;
+    float: right;*/
+    margin: 0;
+    padding: 0;
+    display: flex;
   
   }
   
@@ -247,6 +250,7 @@
     display: inline-block;
     margin: auto;
     position: relative;
+    font-size: 7px;
    
   }
   

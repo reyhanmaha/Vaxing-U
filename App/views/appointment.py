@@ -3,6 +3,7 @@ from flask_login import LoginManager, UserMixin,login_required,current_user
 from App.models.forms import MakeBooking
 from App.models.booking import Appointments
 from App.controllers.bookingOps import create_appointment, cancel_all_bookings
+from App.database import db
 import json
 
 booking_views = Blueprint('booking_views', __name__, template_folder='../templates')
@@ -20,19 +21,15 @@ def PostData():
     if myForm.validate_on_submit():
         bookingData=request.form
         create_appointment(bookingData["vaccineLoc"],bookingData["vaccineType"],bookingData["date"],bookingData["time"],user_id=current_user.id)
-        #return redirect("/mainPage")
         return redirect(url_for('mainPage_views.show_main'))
     flash('Error invalid input!')
-    #return redirect("/mainPage")
     return redirect(url_for('mainPage_views.show_main'))
 
 @booking_views.route('/cancelBookings', methods=['GET'])
 @login_required
 def cancel_bookings():
-    bookings=Appointments.query.filter_by(user_id=current_user.id).all()
+    bookings=Appointments.query.filter_by(bookingID=current_user.id).all()
     if bookings:
         cancel_all_bookings(bookings)
-        #return redirect('/mainPage')
         return redirect(url_for('mainPage_views.show_main'))
-    #return redirect('/mainPage')
     return redirect(url_for('mainPage_views.show_main'))
