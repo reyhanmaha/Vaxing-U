@@ -624,5 +624,38 @@ header{
   height: 100px;
 }
 
+.contact-title h1{
+  font-size: 30px;
+}
+
+.contact-title h2{
+  font-size: 18px;
+}
+
+.form-control{
+  width: 300px;
+}
+
+.signup-Form{
+  width: auto;
+  padding: 40px;
+  background: #fff;  
+}
+
+
+.signup-Form .inputBox span{
+  font-size: 10px;
+}
+
+.btn{
+  width: 180px;
+  font-size: 10px;
+}
+
+.form .submit{
+  width: 175px;
+}
+
+
 
 }
